@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { NavLink } from "react-router-dom";
+import styles from './Home.module.css'
 
 const Home = () => {
   const [trendingMovies, setTrendingMovies] = useState([]);
@@ -25,10 +26,10 @@ const Home = () => {
 
   return (
     <div>
-      <ul>
+      <ul className={styles.list}>
         {trendingMovies.map((movie) => (
-          <li key={movie.id}>
-            <NavLink to={`/movies/${movie.id}`}>{movie.title}</NavLink>
+          <li className={styles.item} key={movie.id}>
+            <NavLink className={styles.link} to={`/movies/${movie.id}`}>{movie.title}</NavLink>
           </li>
         ))}
       </ul>

@@ -1,0 +1,49 @@
+.container{
+    padding-left: 30px;
+}
+.back{
+    display: block;
+    text-decoration: none;
+    color: gray;
+    font-size: 20px;
+    padding: 5px;
+}
+.flex{
+    display: flex;
+}
+.right{
+    padding-left: 20px;
+}
+
+.header{
+   
+ font-size: 35px;
+
+    
+}
+
+.list{
+    list-style: none;
+    display: flex;
+}
+.item{
+text-decoration: none;
+padding-right: 10px;
+}
+.link_list{
+    list-style: none;
+}
+.reviews{
+
+color: black;
+}
+.cast{
+ 
+  color: black;  
+}
+.cast:hover{
+color: tomato;
+}
+.reviews:hover{
+    color: tomato;
+}

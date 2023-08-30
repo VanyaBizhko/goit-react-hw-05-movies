@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { NavLink, useLocation, useSearchParams } from "react-router-dom";
-
+import styles from './Movies.module.css'
 const Movies = () => {
  
     // const [movies, setMovies] = useState([]);
@@ -18,6 +18,11 @@ const Movies = () => {
          setMovieName(newMovieName);
          e.target.value ? setSearchQuery({q: e.target.value}): setSearchQuery({})
          
+    };
+     const handleKeyPress = (e) => {
+        if (e.key === 'Enter') {
+            handleSearchClick();
+        }
     };
 
     const handleSearchClick = () => {
@@ -47,32 +52,31 @@ const Movies = () => {
     
 
     return (
-        <div>
+        <div className={styles.container}>
             <h1>Films</h1>
             <input 
                 type="text"
                 autoComplete="off"
                 autoFocus
                 placeholder="Search movies"
+                className={styles.input}
                 value={movieName}
                 onChange={handleNameChange}
+                onKeyDown={handleKeyPress}
             />
             
           <button onClick={handleSearchClick}>Search</button>
-            {searchResults.length === 0 ? ( // Перевіряємо, чи масив результатів порожній
-                <p>No movies found</p> // Виводимо повідомлення, якщо результати відсутні
-            ) : (
-                    
-                    <ul>
+            
+                    <ul className={styles.list}>
                         
                     {searchResults.map((movie) => (
-                        <li key={movie.id}>
+                        <li className={styles.item} key={movie.id}>
                             
-                            <NavLink state={{from:location}} to={`/movies/${movie.id}`} >{movie.title}</NavLink>
+                            <NavLink className={styles.link} state={{from:location}} to={`/movies/${movie.id}`} >{movie.title}</NavLink>
                         </li>
                     ))}
                 </ul>
-            )}
+           
         </div>
     );
 };

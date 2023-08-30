@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import styles from './Cast.module.css'
 
 const Cast = () => {
   const [cast, setCast] = useState([]);
@@ -30,10 +31,10 @@ const Cast = () => {
   return (
     <div>
       <h2>Cast</h2>
-      <ul>
+      <ul className={styles.list}>
         {cast.length > 0 ? (
           cast.map(actor => (
-              <li key={actor.id}><img width='100px' src={`https://image.tmdb.org/t/p/w500${actor.profile_path}`} alt={actor.name} /><h2> {actor.name}</h2> <p>"{actor.character}"</p></li>
+              <li className={styles.item} key={actor.id}><img width='100px' src={`https://image.tmdb.org/t/p/w500${actor.profile_path}`} alt={actor.name} /><h2> {actor.name}</h2> <p>"{actor.character}"</p></li>
               
           ))
         ) : (
