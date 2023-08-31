@@ -13,9 +13,7 @@ const Movies = () => {
     const location = useLocation();
 
 
-    useEffect(() => {
-        handleSearchClick()
-    }, []);
+    
     
      const handleNameChange = (e) => {
         const newMovieName = e.currentTarget.value.toLowerCase();
@@ -29,6 +27,7 @@ const Movies = () => {
         }
     };
 
+    
     const handleSearchClick = () => {
     const newMovieName = movieName.toLowerCase(); // Отримуємо назву фільму з інпуту
     setMovieName(newMovieName); // Зберігаємо назву в стані
@@ -53,8 +52,10 @@ const Movies = () => {
         });
     };
     
-    
-
+    useEffect(() => {
+    handleSearchClick()
+// eslint-disable-next-line react-hooks/exhaustive-deps
+}, []);
     return (
         <div className={styles.container}>
             <h1>Films</h1>
