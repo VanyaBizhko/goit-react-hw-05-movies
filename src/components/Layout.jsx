@@ -1,18 +1,21 @@
-import { NavLink, Outlet } from "react-router-dom";
+import { NavLink, Outlet, useLocation } from "react-router-dom";
 import { Suspense } from "react";
 import styles from './Layout.module.css'
 
 
 const Layout = () => {
+     const location = useLocation();
+    const isHomeActive = location.pathname === "/";
+    const isMoviesActive = location.pathname.startsWith("/movies");
     return (
        <div>
          <nav>
          <ul className={styles.list}>
            <li className={styles.item}>
-           <NavLink className={styles.link}  to='/'>Home</NavLink>
+           <NavLink  className={`${styles.link} ${isHomeActive ? styles.active : ""}`}  to='/'>Home</NavLink>
            </li>
            <li className={styles.item}>
-           <NavLink className={styles.link}  to='/movies'>Movies</NavLink>
+           <NavLink className={`${styles.link} ${isMoviesActive ? styles.active : ""}`}  to='/movies'>Movies</NavLink>
            </li>
            </ul>
             </nav>

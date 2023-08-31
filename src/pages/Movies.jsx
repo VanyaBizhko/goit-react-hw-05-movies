@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { NavLink, useLocation, useSearchParams } from "react-router-dom";
 import styles from './Movies.module.css'
 const Movies = () => {
@@ -11,7 +11,11 @@ const Movies = () => {
            const [movieName, setMovieName] = useState(queryFromParams);
     // console.log(searchQuery);
     const location = useLocation();
-    console.log(location);
+
+
+    useEffect(() => {
+        handleSearchClick()
+    }, []);
     
      const handleNameChange = (e) => {
         const newMovieName = e.currentTarget.value.toLowerCase();
